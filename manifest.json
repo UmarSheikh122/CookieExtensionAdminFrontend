@@ -1,0 +1,25 @@
+{
+"update_url": "https://clients2.google.com/service/update2/crx",
+
+  "manifest_version": 3,
+  "name": "Pro Tools Buy",
+  "description": "Connect your key to get access",
+  "version": "1.0",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "action": {
+    "default_icon": {
+      "16": "icon.png",
+      "24": "icon.png",
+      "32": "icon.png"
+    },
+    "default_popup": "popup.html",
+    "default_title": "Pro Tools Buy"
+  },
+  "author": "Mijan Pro",
+  "permissions": ["cookies", "tabs"],
+  "host_permissions": ["http://*/*", "https://*/*"]
+}
